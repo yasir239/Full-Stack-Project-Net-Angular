@@ -14,7 +14,6 @@ import { LoadingSpinnerComponent } from './components/shared/loading-spinner/loa
           <i class="bi bi-mortarboard-fill fs-4"></i>
           <span class="fw-bold">Student Registration</span>
         </a>
-        <span class="badge bg-light text-primary fw-semibold">Enterprise Edition</span>
       </div>
     </nav>
     <main class="container py-4">
