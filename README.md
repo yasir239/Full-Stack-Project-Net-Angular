@@ -7,6 +7,6 @@ A complete full-stack web application designed for managing student registration
 ![Student Form UI](docs/student_form_ui.png)
 
 
-### Docker (recommended)
+### Docker 
 ```bash
 docker-compose up --build
