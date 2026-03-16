@@ -1,0 +1,67 @@
+.text-gradient {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card {
+  transition: box-shadow 0.3s;
+}
+
+.card:hover {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08) !important;
+}
+
+.form-control, .form-select {
+  border-radius: 10px;
+  padding: 0.6rem 0.9rem;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.15);
+}
+
+.form-control-lg {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+}
+
+.form-label {
+  font-size: 0.875rem;
+  color: #4a5568;
+}
+
+.input-group .input-group-text {
+  border-radius: 10px 0 0 10px;
+  background-color: #f8f9fc;
+  border-right: none;
+  color: #667eea;
+}
+
+.input-group .form-control {
+  border-left: none;
+  border-radius: 0 10px 10px 0;
+}
+
+.input-group .form-control:focus {
+  border-left: none;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  font-weight: 600;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #5a6fd6 0%, #6a4296 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.invalid-feedback {
+  font-size: 0.8rem;
+}

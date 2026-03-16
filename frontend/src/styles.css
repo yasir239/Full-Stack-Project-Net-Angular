@@ -1,0 +1,56 @@
+/* ===== Global Styles ===== */
+:root {
+  --primary: #667eea;
+  --primary-dark: #5a6fd6;
+  --accent: #764ba2;
+  --bg: #f4f6fb;
+  --text: #1a202c;
+  --text-muted: #718096;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #c1c8d6; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #a0aec0; }
+
+/* ===== Smooth transitions for page navigation ===== */
+router-outlet + * {
+  animation: pageIn 0.3s ease-out;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Button hover lift ===== */
+.btn {
+  transition: all 0.2s ease;
+}
+
+/* ===== Selection color ===== */
+::selection {
+  background: rgba(102, 126, 234, 0.2);
+  color: inherit;
+}

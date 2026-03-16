@@ -1,0 +1,155 @@
+<div class="d-flex flex-column gap-4">
+  <!-- Header -->
+  <div class="d-flex justify-content-between align-items-center">
+    <div>
+      <h1 class="fw-bold mb-1 text-gradient">
+        <i class="bi bi-people-fill me-2"></i>Students
+      </h1>
+      <p class="text-muted mb-0">Manage student registrations &mdash; {{ totalCount() }} total records</p>
+    </div>
+    <a routerLink="/students/create" class="btn btn-primary btn-lg d-flex align-items-center gap-2 shadow-sm" style="border-radius: 12px;">
+      <i class="bi bi-plus-circle"></i> Add Student
+    </a>
+  </div>
+
+  <!-- Search & Page Size Controls -->
+  <div class="card border-0 shadow-sm" style="border-radius: 16px;">
+    <div class="card-body d-flex flex-wrap gap-3 align-items-center py-3">
+      <div class="input-group flex-grow-1" style="max-width: 400px;">
+        <span class="input-group-text bg-transparent border-end-0"><i class="bi bi-search text-muted"></i></span>
+        <input
+          type="text"
+          class="form-control border-start-0 ps-0"
+          placeholder="Search by name, email, mobile, city..."
+          [ngModel]="searchTerm()"
+          (ngModelChange)="onSearch($event)"
+          id="search-input">
+      </div>
+      <div class="d-flex align-items-center gap-2 ms-auto">
+        <label class="text-muted small mb-0" for="page-size-select">Rows:</label>
+        <select
+          id="page-size-select"
+          class="form-select form-select-sm"
+          style="width: auto; border-radius: 10px;"
+          [ngModel]="pageSize()"
+          (ngModelChange)="onPageSizeChange($event)">
+          <option [value]="5">5</option>
+          <option [value]="10">10</option>
+          <option [value]="25">25</option>
+          <option [value]="50">50</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- Data Table -->
+  <div class="card border-0 shadow-sm" style="border-radius: 16px; overflow: hidden;">
+    @if (students().length === 0) {
+      <div class="card-body text-center py-5">
+        <i class="bi bi-inbox display-1 text-muted opacity-50"></i>
+        <h5 class="text-muted mt-3">No students found</h5>
+        <p class="text-muted">Try adjusting your search or add a new student.</p>
+        <a routerLink="/students/create" class="btn btn-primary mt-2" style="border-radius: 10px;">
+          <i class="bi bi-plus-circle me-1"></i> Add Your First Student
+        </a>
+      </div>
+    } @else {
+      <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+          <thead>
+            <tr class="table-header-row">
+              <th class="sortable-header" (click)="onSort('studentId')">
+                # <i class="bi" [class]="getSortIcon('studentId')"></i>
+              </th>
+              <th class="sortable-header" (click)="onSort('studentName')">
+                Name <i class="bi" [class]="getSortIcon('studentName')"></i>
+              </th>
+              <th class="sortable-header" (click)="onSort('email')">
+                Email <i class="bi" [class]="getSortIcon('email')"></i>
+              </th>
+              <th class="sortable-header" (click)="onSort('mobileNo')">
+                Mobile <i class="bi" [class]="getSortIcon('mobileNo')"></i>
+              </th>
+              <th class="sortable-header" (click)="onSort('city')">
+                City <i class="bi" [class]="getSortIcon('city')"></i>
+              </th>
+              <th class="sortable-header" (click)="onSort('state')">
+                State <i class="bi" [class]="getSortIcon('state')"></i>
+              </th>
+              <th class="text-end">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (student of students(); track student.studentId) {
+              <tr>
+                <td class="text-muted">{{ student.studentId }}</td>
+                <td>
+                  <span class="fw-semibold">{{ student.studentName }}</span>
+                </td>
+                <td>
+                  <a [href]="'mailto:' + student.email" class="text-decoration-none">{{ student.email }}</a>
+                </td>
+                <td>{{ student.mobileNo }}</td>
+                <td>{{ student.city || '—' }}</td>
+                <td>{{ student.state || '—' }}</td>
+                <td class="text-end">
+                  <div class="btn-group" role="group">
+                    <a
+                      [routerLink]="['/students/edit', student.studentId]"
+                      class="btn btn-sm btn-outline-primary"
+                      style="border-radius: 8px 0 0 8px;"
+                      title="Edit">
+                      <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <button
+                      class="btn btn-sm btn-outline-danger"
+                      style="border-radius: 0 8px 8px 0;"
+                      (click)="confirmDelete(student)"
+                      title="Delete">
+                      <i class="bi bi-trash3"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Pagination -->
+      <div class="card-footer bg-transparent border-0 d-flex justify-content-between align-items-center py-3 px-4">
+        <small class="text-muted">
+          Showing {{ (currentPage() - 1) * pageSize() + 1 }}–{{ currentPage() * pageSize() > totalCount() ? totalCount() : currentPage() * pageSize() }} of {{ totalCount() }}
+        </small>
+        <nav aria-label="Student list pagination">
+          <ul class="pagination pagination-sm mb-0">
+            <li class="page-item" [class.disabled]="!hasPreviousPage()">
+              <button class="page-link" (click)="goToPage(currentPage() - 1)" aria-label="Previous">
+                <i class="bi bi-chevron-left"></i>
+              </button>
+            </li>
+            @for (page of getPageNumbers(); track page) {
+              <li class="page-item" [class.active]="page === currentPage()">
+                <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+              </li>
+            }
+            <li class="page-item" [class.disabled]="!hasNextPage()">
+              <button class="page-link" (click)="goToPage(currentPage() + 1)" aria-label="Next">
+                <i class="bi bi-chevron-right"></i>
+              </button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    }
+  </div>
+</div>
+
+<!-- Delete Confirmation Dialog -->
+<app-confirm-dialog
+  [isOpen]="showDeleteDialog()"
+  [title]="'Delete Student'"
+  [message]="'Are you sure you want to delete ' + (studentToDelete()?.studentName || 'this student') + '? This action cannot be undone.'"
+  (confirmed)="onDeleteConfirmed()"
+  (cancelled)="onDeleteCancelled()"
+/>

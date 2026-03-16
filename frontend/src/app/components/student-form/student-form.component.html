@@ -1,0 +1,158 @@
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <!-- Header -->
+    <div class="d-flex align-items-center mb-4">
+      <a routerLink="/students" class="btn btn-light me-3 shadow-sm" style="border-radius: 12px;">
+        <i class="bi bi-arrow-left"></i>
+      </a>
+      <div>
+        <h1 class="fw-bold mb-0 text-gradient">{{ pageTitle() }}</h1>
+        <p class="text-muted mb-0">{{ isEditMode() ? 'Update the student details below.' : 'Fill in the registration form below.' }}</p>
+      </div>
+    </div>
+
+    <!-- Form Card -->
+    <div class="card border-0 shadow-sm" style="border-radius: 16px;">
+      <div class="card-body p-4 p-lg-5">
+        <form [formGroup]="studentForm" (ngSubmit)="onSubmit()">
+
+          <!-- Personal Information Section -->
+          <h6 class="text-uppercase text-muted fw-bold small mb-3 d-flex align-items-center gap-2">
+            <i class="bi bi-person-fill"></i> Personal Information
+          </h6>
+          <div class="row g-3 mb-4">
+            <div class="col-md-12">
+              <label for="studentName" class="form-label fw-semibold">Full Name <span class="text-danger">*</span></label>
+              <input
+                type="text"
+                id="studentName"
+                class="form-control form-control-lg"
+                formControlName="studentName"
+                placeholder="Enter full name"
+                [class.is-invalid]="hasError('studentName', 'required') || hasError('studentName', 'maxlength')">
+              @if (hasError('studentName', 'required')) {
+                <div class="invalid-feedback">Full name is required.</div>
+              }
+              @if (hasError('studentName', 'maxlength')) {
+                <div class="invalid-feedback">Name must not exceed 100 characters.</div>
+              }
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  formControlName="email"
+                  placeholder="name@example.com"
+                  [class.is-invalid]="hasError('email', 'required') || hasError('email', 'email') || hasError('email', 'maxlength')">
+                @if (hasError('email', 'required')) {
+                  <div class="invalid-feedback">Email is required.</div>
+                }
+                @if (hasError('email', 'email')) {
+                  <div class="invalid-feedback">Please enter a valid email address.</div>
+                }
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label for="mobileNo" class="form-label fw-semibold">Mobile Number <span class="text-danger">*</span></label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-phone"></i></span>
+                <input
+                  type="text"
+                  id="mobileNo"
+                  class="form-control"
+                  formControlName="mobileNo"
+                  placeholder="1234567890"
+                  maxlength="10"
+                  [class.is-invalid]="hasError('mobileNo', 'required') || hasError('mobileNo', 'maxlength') || hasError('mobileNo', 'pattern')">
+                @if (hasError('mobileNo', 'required')) {
+                  <div class="invalid-feedback">Mobile number is required.</div>
+                }
+                @if (hasError('mobileNo', 'pattern')) {
+                  <div class="invalid-feedback">Mobile number must contain only digits.</div>
+                }
+                @if (hasError('mobileNo', 'maxlength')) {
+                  <div class="invalid-feedback">Mobile number must not exceed 10 digits.</div>
+                }
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4 opacity-25">
+
+          <!-- Address Section -->
+          <h6 class="text-uppercase text-muted fw-bold small mb-3 d-flex align-items-center gap-2">
+            <i class="bi bi-geo-alt-fill"></i> Address Details
+          </h6>
+          <div class="row g-3 mb-4">
+            <div class="col-md-12">
+              <label for="addressLine1" class="form-label fw-semibold">Address Line 1</label>
+              <input
+                type="text"
+                id="addressLine1"
+                class="form-control"
+                formControlName="addressLine1"
+                placeholder="Street address, P.O. box">
+            </div>
+            <div class="col-md-12">
+              <label for="addressLine2" class="form-label fw-semibold">Address Line 2</label>
+              <input
+                type="text"
+                id="addressLine2"
+                class="form-control"
+                formControlName="addressLine2"
+                placeholder="Apartment, suite, unit, building, floor">
+            </div>
+            <div class="col-md-4">
+              <label for="city" class="form-label fw-semibold">City</label>
+              <input
+                type="text"
+                id="city"
+                class="form-control"
+                formControlName="city"
+                placeholder="City">
+            </div>
+            <div class="col-md-4">
+              <label for="state" class="form-label fw-semibold">State</label>
+              <input
+                type="text"
+                id="state"
+                class="form-control"
+                formControlName="state"
+                placeholder="State">
+            </div>
+            <div class="col-md-4">
+              <label for="pinCode" class="form-label fw-semibold">Pin Code</label>
+              <input
+                type="text"
+                id="pinCode"
+                class="form-control"
+                formControlName="pinCode"
+                placeholder="Pin Code"
+                maxlength="10"
+                [class.is-invalid]="hasError('pinCode', 'pattern')">
+              @if (hasError('pinCode', 'pattern')) {
+                <div class="invalid-feedback">Pin code must contain only digits.</div>
+              }
+            </div>
+          </div>
+
+          <!-- Actions -->
+          <div class="d-flex justify-content-end gap-3 pt-3 border-top">
+            <a routerLink="/students" class="btn btn-light px-4" style="border-radius: 10px;">
+              <i class="bi bi-x-lg me-1"></i> Cancel
+            </a>
+            <button type="submit" class="btn btn-primary px-4 shadow-sm" style="border-radius: 10px;">
+              <i class="bi" [class]="isEditMode() ? 'bi-check-lg' : 'bi-save'"></i>
+              {{ isEditMode() ? ' Update Student' : ' Register Student' }}
+            </button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

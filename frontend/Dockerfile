@@ -1,0 +1,25 @@
+# Build stage
+FROM node:20-alpine AS build
+WORKDIR /app
+
+COPY package.json package-lock.json* ./
+RUN npm install
+
+COPY . .
+RUN npx ng build --configuration production
+
+# Runtime stage
+FROM nginx:alpine AS runtime
+
+# Remove default nginx config
+RUN rm /etc/nginx/conf.d/default.conf
+
+# Copy custom nginx config
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+
+# Copy built Angular app
+COPY --from=build /app/dist/student-registration-frontend/browser /usr/share/nginx/html
+
+EXPOSE 80
+
+CMD ["nginx", "-g", "daemon off;"]
