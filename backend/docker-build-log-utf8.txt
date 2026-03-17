@@ -1,0 +1,469 @@
+﻿docker : #0 building with 
+"desktop-linux" instance 
+using docker driver
+At line:1 char:1
++ docker build --no-cache 
+--progress=plain . > 
+docker-build-log.txt 2>& 
+...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~
+    + CategoryInfo         
+     : NotSpecified: (#0   
+  building wit...g docke   
+ r driver:String) [], R    
+emoteException
+    + FullyQualifiedErrorI 
+   d : NativeCommandError
+ 
+
+#1 [internal] load build 
+definition from Dockerfile
+#1 transferring 
+dockerfile: 1.04kB 0.0s 
+done
+#1 DONE 0.1s
+
+#2 [internal] load 
+metadata for mcr.microsoft.
+com/dotnet/aspnet:8.0
+#2 DONE 1.3s
+
+#3 [internal] load 
+metadata for mcr.microsoft.
+com/dotnet/sdk:8.0
+#3 DONE 1.3s
+
+#4 [internal] load 
+.dockerignore
+#4 transferring context: 
+2B done
+#4 DONE 0.0s
+
+#5 [internal] load build 
+context
+#5 DONE 0.0s
+
+#6 [runtime 1/3] FROM mcr.m
+icrosoft.com/dotnet/aspnet:
+8.0@sha256:d4d80bf500f4c830
+7e5c44bf61eb58aec027da07c4d
+1c40816846fe5eef3f34d
+#6 resolve mcr.microsoft.co
+m/dotnet/aspnet:8.0@sha256:
+d4d80bf500f4c8307e5c44bf61e
+b58aec027da07c4d1c40816846f
+e5eef3f34d 0.0s done
+#6 DONE 0.1s
+
+#7 [runtime 2/3] WORKDIR 
+/app
+#7 CACHED
+
+#8 [build  1/11] FROM mcr.m
+icrosoft.com/dotnet/sdk:8.0
+@sha256:a9330090b730c2abde8
+f3f43b3d1e24e4b8cba028de7ba
+b1a7fdcd50cb7a3b7e
+#8 resolve mcr.microsoft.co
+m/dotnet/sdk:8.0@sha256:a93
+30090b730c2abde8f3f43b3d1e2
+4e4b8cba028de7bab1a7fdcd50c
+b7a3b7e 0.0s done
+#8 DONE 0.1s
+
+#9 [build  2/11] WORKDIR 
+/src
+#9 CACHED
+
+#5 [internal] load build 
+context
+#5 transferring context: 
+36.16MB 5.0s
+#5 transferring context: 
+60.23MB 10.0s
+#5 transferring context: 
+96.96MB 15.1s
+#5 transferring context: 
+114.33MB 18.6s done
+#5 DONE 18.8s
+
+#10 [build  3/11] COPY 
+StudentRegistration.sln .
+#10 DONE 0.6s
+
+#11 [build  4/11] COPY Stud
+entRegistration.Domain/Stud
+entRegistration.Domain.cspr
+oj 
+StudentRegistration.Domain/
+#11 DONE 0.1s
+
+#12 [build  5/11] COPY Stud
+entRegistration.Infrastruct
+ure/StudentRegistration.Inf
+rastructure.csproj StudentR
+egistration.Infrastructure/
+#12 DONE 0.1s
+
+#13 [build  6/11] COPY Stud
+entRegistration.Application
+/StudentRegistration.Applic
+ation.csproj StudentRegistr
+ation.Application/
+#13 DONE 0.1s
+
+#14 [build  7/11] COPY Stud
+entRegistration.API/Student
+Registration.API.csproj 
+StudentRegistration.API/
+#14 DONE 0.1s
+
+#15 [build  8/11] RUN 
+dotnet restore
+#15 6.731   Determining 
+projects to restore...
+#15 10.25   Restored /src/S
+tudentRegistration.Domain/S
+tudentRegistration.Domain.c
+sproj (in 792 ms).
+#15 22.22 /src/StudentRegis
+tration.Application/Student
+Registration.Application.cs
+proj : warning NU1903: 
+Package 'AutoMapper' 
+13.0.1 has a known high 
+severity vulnerability, htt
+ps://github.com/advisories/
+GHSA-rvv3-g6hj-g44x [/src/S
+tudentRegistration.sln]
+#15 22.43   Restored /src/S
+tudentRegistration.Applicat
+ion/StudentRegistration.App
+lication.csproj (in 13.12 
+sec).
+#15 63.04   Restored /src/S
+tudentRegistration.API/Stud
+entRegistration.API.csproj 
+(in 53.8 sec).
+#15 63.05   Restored /src/S
+tudentRegistration.Infrastr
+ucture/StudentRegistration.
+Infrastructure.csproj (in 
+53.8 sec).
+#15 DONE 64.8s
+
+#16 [build  9/11] COPY . .
+#16 DONE 8.2s
+
+#17 [build 10/11] WORKDIR /
+src/StudentRegistration.API
+#17 DONE 0.2s
+
+#18 [build 11/11] RUN 
+dotnet publish -c Release 
+-o /app/publish 
+--no-restore
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018: The 
+"ResolvePackageAssets" 
+task failed unexpectedly. [
+/src/StudentRegistration.AP
+I/StudentRegistration.API.c
+sproj]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018: NuGet.Packaging.Co
+re.PackagingException: 
+Unable to find fallback 
+package folder 'C:\Program 
+Files (x86)\Microsoft 
+Visual Studio\Shared\NuGetP
+ackages'. [/src/StudentRegi
+stration.API/StudentRegistr
+ation.API.csproj]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018:    at NuGet.Packag
+ing.FallbackPackagePathReso
+lver..ctor(String 
+userPackageFolder, 
+IEnumerable`1 
+fallbackPackageFolders) [/s
+rc/StudentRegistration.API/
+StudentRegistration.API.csp
+roj]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.NuGetPackageR
+esolver.CreateResolver(IEnu
+merable`1 packageFolders) [
+/src/StudentRegistration.AP
+I/StudentRegistration.API.c
+sproj]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.ResolvePackag
+eAssets.CacheWriter..ctor(R
+esolvePackageAssets task) [
+/src/StudentRegistration.AP
+I/StudentRegistration.API.c
+sproj]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.ResolvePackag
+eAssets.CacheReader.CreateR
+eaderFromDisk(ResolvePackag
+eAssets task, Byte[] 
+settingsHash) [/src/Student
+Registration.API/StudentReg
+istration.API.csproj]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.ResolvePackag
+eAssets.CacheReader..ctor(R
+esolvePackageAssets task) [
+/src/StudentRegistration.AP
+I/StudentRegistration.API.c
+sproj]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.ResolvePackag
+eAssets.ReadItemGroups() [/
+src/StudentRegistration.API
+/StudentRegistration.API.cs
+proj]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.ResolvePackag
+eAssets.ExecuteCore() [/src
+/StudentRegistration.API/St
+udentRegistration.API.cspro
+j]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.TaskBase.Exec
+ute() [/src/StudentRegistra
+tion.API/StudentRegistratio
+n.API.csproj]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018:    at Microsoft.Bu
+ild.BackEnd.TaskExecutionHo
+st.Execute() [/src/StudentR
+egistration.API/StudentRegi
+stration.API.csproj]
+#18 3.359 /usr/share/dotnet
+/sdk/8.0.419/Sdks/Microsoft
+.NET.Sdk/targets/Microsoft.
+PackageDependencyResolution
+.targets(266,5): error 
+MSB4018:    at Microsoft.Bu
+ild.BackEnd.TaskBuilder.Exe
+cuteInstantiatedTask(TaskEx
+ecutionHost 
+taskExecutionHost, 
+TaskLoggingContext 
+taskLoggingContext, 
+TaskHost taskHost, 
+ItemBucket bucket, 
+TaskExecutionMode 
+howToExecuteTask) [/src/Stu
+dentRegistration.API/Studen
+tRegistration.API.csproj]
+#18 ERROR: process 
+"/bin/sh -c dotnet publish 
+-c Release -o /app/publish 
+--no-restore" did not 
+complete successfully: 
+exit code: 1
+------
+ > [build 11/11] RUN 
+dotnet publish -c Release 
+-o /app/publish 
+--no-restore:
+3.359 /usr/share/dotnet/sdk
+/8.0.419/Sdks/Microsoft.NET
+.Sdk/targets/Microsoft.Pack
+ageDependencyResolution.tar
+gets(266,5): error 
+MSB4018:    at NuGet.Packag
+ing.FallbackPackagePathReso
+lver..ctor(String 
+userPackageFolder, 
+IEnumerable`1 
+fallbackPackageFolders) [/s
+rc/StudentRegistration.API/
+StudentRegistration.API.csp
+roj]
+3.359 /usr/share/dotnet/sdk
+/8.0.419/Sdks/Microsoft.NET
+.Sdk/targets/Microsoft.Pack
+ageDependencyResolution.tar
+gets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.NuGetPackageR
+esolver.CreateResolver(IEnu
+merable`1 packageFolders) [
+/src/StudentRegistration.AP
+I/StudentRegistration.API.c
+sproj]
+3.359 /usr/share/dotnet/sdk
+/8.0.419/Sdks/Microsoft.NET
+.Sdk/targets/Microsoft.Pack
+ageDependencyResolution.tar
+gets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.ResolvePackag
+eAssets.CacheWriter..ctor(R
+esolvePackageAssets task) [
+/src/StudentRegistration.AP
+I/StudentRegistration.API.c
+sproj]
+3.359 /usr/share/dotnet/sdk
+/8.0.419/Sdks/Microsoft.NET
+.Sdk/targets/Microsoft.Pack
+ageDependencyResolution.tar
+gets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.ResolvePackag
+eAssets.CacheReader.CreateR
+eaderFromDisk(ResolvePackag
+eAssets task, Byte[] 
+settingsHash) [/src/Student
+Registration.API/StudentReg
+istration.API.csproj]
+3.359 /usr/share/dotnet/sdk
+/8.0.419/Sdks/Microsoft.NET
+.Sdk/targets/Microsoft.Pack
+ageDependencyResolution.tar
+gets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.ResolvePackag
+eAssets.CacheReader..ctor(R
+esolvePackageAssets task) [
+/src/StudentRegistration.AP
+I/StudentRegistration.API.c
+sproj]
+3.359 /usr/share/dotnet/sdk
+/8.0.419/Sdks/Microsoft.NET
+.Sdk/targets/Microsoft.Pack
+ageDependencyResolution.tar
+gets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.ResolvePackag
+eAssets.ReadItemGroups() [/
+src/StudentRegistration.API
+/StudentRegistration.API.cs
+proj]
+3.359 /usr/share/dotnet/sdk
+/8.0.419/Sdks/Microsoft.NET
+.Sdk/targets/Microsoft.Pack
+ageDependencyResolution.tar
+gets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.ResolvePackag
+eAssets.ExecuteCore() [/src
+/StudentRegistration.API/St
+udentRegistration.API.cspro
+j]
+3.359 /usr/share/dotnet/sdk
+/8.0.419/Sdks/Microsoft.NET
+.Sdk/targets/Microsoft.Pack
+ageDependencyResolution.tar
+gets(266,5): error 
+MSB4018:    at Microsoft.NE
+T.Build.Tasks.TaskBase.Exec
+ute() [/src/StudentRegistra
+tion.API/StudentRegistratio
+n.API.csproj]
+3.359 /usr/share/dotnet/sdk
+/8.0.419/Sdks/Microsoft.NET
+.Sdk/targets/Microsoft.Pack
+ageDependencyResolution.tar
+gets(266,5): error 
+MSB4018:    at Microsoft.Bu
+ild.BackEnd.TaskExecutionHo
+st.Execute() [/src/StudentR
+egistration.API/StudentRegi
+stration.API.csproj]
+3.359 /usr/share/dotnet/sdk
+/8.0.419/Sdks/Microsoft.NET
+.Sdk/targets/Microsoft.Pack
+ageDependencyResolution.tar
+gets(266,5): error 
+MSB4018:    at Microsoft.Bu
+ild.BackEnd.TaskBuilder.Exe
+cuteInstantiatedTask(TaskEx
+ecutionHost 
+taskExecutionHost, 
+TaskLoggingContext 
+taskLoggingContext, 
+TaskHost taskHost, 
+ItemBucket bucket, 
+TaskExecutionMode 
+howToExecuteTask) [/src/Stu
+dentRegistration.API/Studen
+tRegistration.API.csproj]
+------
+Dockerfile:20
+--------------------
+  18 |     # Build and 
+publish
+  19 |     WORKDIR /src/Stu
+dentRegistration.API
+  20 | >>> RUN dotnet 
+publish -c Release -o 
+/app/publish --no-restore
+  21 |     
+  22 |     # Runtime stage
+--------------------
+ERROR: failed to build: 
+failed to solve: process 
+"/bin/sh -c dotnet publish 
+-c Release -o /app/publish 
+--no-restore" did not 
+complete successfully: 
+exit code: 1
