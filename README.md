@@ -7,7 +7,8 @@ A complete full-stack web application designed for managing student registration
 ![Student Form UI](docs/student_form_ui.png)
 <img width="2201" height="1593" alt="Screenshot 2026-03-16 212902" src="https://github.com/user-attachments/assets/c425c3ca-6fc4-4478-8f05-b0e011170bc8" />
 <img width="2510" height="1532" alt="Screenshot 2026-03-16 213018" src="https://github.com/user-attachments/assets/e1ee814e-b993-4404-9d3e-af842556ebf6" />
-![Uploading Screenshot 2026-03-16 213206.png…]()
+<img width="2773" height="1666" alt="Screenshot 2026-03-16 213206" src="https://github.com/user-attachments/assets/7b2d3954-f3fd-4053-ad1d-fba97f9d4553" />
+
 
 
 
