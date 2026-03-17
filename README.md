@@ -9,7 +9,6 @@ A complete full-stack web application designed for managing student registration
 
 
 
-
 ### run using Docker 
 ```bash
 docker-compose up --build
